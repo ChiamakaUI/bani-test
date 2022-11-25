@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState }  from "react";
 import Transaction from "./Transaction";
 
 const Transactions = ({ transactions, active, setActive, setActiveTransaction }) => {
-  
+  const [selected, setSelected] = useState("");
   return (
     <table className="w-[90%] mx-auto">
       <thead>
@@ -27,6 +27,8 @@ const Transactions = ({ transactions, active, setActive, setActiveTransaction })
             isActive={active === transaction.id}
             setIsActive={setActive}
             setActiveTransaction={setActiveTransaction}
+            setSelectedText={setSelected}
+            selectedText={selected}
           />
         ))}
       </tbody>

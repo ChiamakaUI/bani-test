@@ -11,7 +11,14 @@ const Transaction = ({
   isActive,
   setIsActive,
   id,
+  selectedText,
+  setSelectedText,
 }) => {
+ 
+  const copyText = (text) => {
+    navigator.clipboard.writeText(text);
+    setSelectedText(text);
+  };
   return (
     <tr
       className={`cursor-pointer ${
@@ -24,8 +31,11 @@ const Transaction = ({
       </td>
       <td>{bankName}</td>
       <td>{accountNumber}</td>
-      <td>
-        <BiCopy />
+      <td onClick={() => copyText(accountNumber)}>
+        {
+          selectedText === accountNumber ?  <span className="text-[#5444F2]">Copied</span> : <BiCopy />
+        }
+        
       </td>
       <td>
         <button
